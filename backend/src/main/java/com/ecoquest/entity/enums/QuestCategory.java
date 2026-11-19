@@ -1,0 +1,13 @@
+package com.ecoquest.entity.enums;
+
+public enum QuestCategory {
+    WASTE_MANAGEMENT,
+    TREE_PLANTATION,
+    WATER_CONSERVATION,
+    ENERGY_CONSERVATION,
+    PLASTIC_FREE,
+    SUSTAINABLE_TRANSPORT,
+    COMMUNITY_CLEANUP,
+    BIODIVERSITY,
+    OTHER
+}

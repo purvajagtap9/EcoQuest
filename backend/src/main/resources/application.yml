@@ -1,0 +1,44 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  application:
+    name: ecoquest-india
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://localhost:27017/ecoquest}
+  servlet:
+    multipart:
+      max-file-size: ${MAX_UPLOAD_SIZE:5MB}
+      max-request-size: ${MAX_UPLOAD_SIZE:5MB}
+  jackson:
+    default-property-inclusion: non_null
+
+# App-specific config, all overridable via environment variables / .env
+app:
+  jwt:
+    secret: ${JWT_SECRET:change-this-dev-only-secret-please-override-in-env}
+    expiration-ms: ${JWT_EXPIRATION_MS:86400000}   # 24h
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173}
+  storage:
+    provider: ${STORAGE_PROVIDER:local}            # local | s3 | cloudinary (later)
+    local-path: ${FILE_STORAGE_PATH:./uploads}
+  ai:
+    provider: ${AI_PROVIDER:mock}                   # mock | gemini
+    gemini-api-key: ${GEMINI_API_KEY:}
+  quest:
+    default-geo-radius-meters: ${DEFAULT_GEO_RADIUS_METERS:500}
+  seed:
+    enabled: ${SEED_DATA:false}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui/index.html
+  api-docs:
+    path: /v3/api-docs
+
+logging:
+  level:
+    com.ecoquest: DEBUG
+    org.springframework.security: INFO
